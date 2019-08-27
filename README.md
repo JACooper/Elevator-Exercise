@@ -38,7 +38,7 @@ Open the file `dist/index.html` in your browser after building.
 
 ## Approach
 
-As the requirements - in my reading of them (more below) - mostly indicate UI components, I chose to do this in React. I have had mixed success with Parcel, but generally find it faster to get up and running with than Webpack, so I chose that as my bundling tool.
+My reading of the requirements (more on this below) mostly indicate user interface elements, so I chose to do this in React to make that easier to develop and iterate on. I also considered Ruby, but I felt that the exercise's IO requirements would be clunky on a command line and I'm unfamiliar with Ruby GUI's outside of Rails. I have had mixed success with Parcel, but generally find it faster to get up and running with than Webpack, so I chose that as my bundling tool.
 
 The UI is vaguely remniscent of an actual elevator, with a large section describing the current state of the doors and a panel to the side that allows the user to indicate a desired floor. The current floor and direction (if applicable) of the elevator is displayed above the panel at all times.
 
@@ -46,19 +46,19 @@ The UI is vaguely remniscent of an actual elevator, with a large section describ
 
 I struggled a lot trying to understand what the output of this exercise is supposed to be. In the interests of giving more useful information, a couple things that specifically triggered confusion:
 
-- "Think about how an elevator [. . .] will accept multiple users/floors at once." The discrete requirements indicate a per-user UI, so multiple users suggests having (provision for) multiple UIs. . .which suggests something along the lines of running multiple clients. That vastly increases the scope of the project *if* that is indeed the correct interpretation. I would have expected an explicit multi-user requirement if this was desired, however.
+- "Think about how an elevator [. . .] will accept multiple users/floors at once." Multiple users suggests a client-server like architecture to me. This vastly increases the scope of the project compared to a simple driver program, *if* that is indeed the correct interpretation. I would have expected an explicit multi-user requirement if this was desired, however, rather than just a suggestion to think about it.
 - "It's possible to have more than a single Elevator class."
-  - If I take "class" to mean a proper capital "C" Class in this context, it is confusing, as that suggests Elevators with different *behavior* from one another. While I can imagine that, say, a Freight Elevator might be a distinct class with distinct behavior, there is *nothing in the prior requirements* to suggest this would be useful or wanted in the app. I can only assume I'm missing something.
-  - If I take "class" to mean an *instance* of a Class, this suggests managing a *bank* of multiple Elevators - in other words, how to optimize trips to achieve maximal transportation with minimal wait time. That's an interesting problem for sure, particularly once you start to think about (for example) weight/space limits and how to account for those. However, this doesn't really make sense in the context of a single user who can only be on one elevator at once - and again, the requirements talk about a UI for a single user, and a multi-client app expands the scope vastly.
-- I was asked to complete this over a weekend, i.e. two days. Perhaps I'm just lacking experience, but trying to implement the above in that time frame is pushing the limits of what I can accomplish, and it's unclear if any of the above is actually desired in the first place.
+  - If I take "class" to mean a proper capital "C" Class in this context, that suggests Elevators with different *behavior* from one another. While I can imagine that, say, a Freight Elevator might be a distinct class with distinct behavior, there is nothing in the other requirements to suggest this would be useful or wanted in the app. I can only assume I'm missing something.
+  - If I take "class" to mean an *instance* of a Class, this suggests managing a *bank* of multiple Elevators - in other words, how to optimize trips to achieve maximal transportation with minimal wait time. That's an interesting problem for sure, particularly once you start to think about things like weight/space limits and how to account for those. However, this doesn't really make sense in the context of a single user who can only be on one elevator at once - and again, I would expect multi-users to be explicitly required.
+- I was asked to try to complete this over a weekend, i.e. two days. That limits the viability of implementing the prior multi-elevator/multi-user suggestions, particularly accounting for lead time and the lack of clarity around whether those things are actually desired in the first place.
 
-As such, I decided to hew as close as possible to the specified requirements, namely:
+As such, I decided to hew as close as possible to the explicit requirements, namely:
 
 - "Create a tool or application that represents an Elevator".
-- "Users can view the current floor of the elevator at any given time" - it is visible at all times above the buttons.
-- "The elevator should take 1 second to move 1 floor" - it does, although it stops when arriving at destination floors, which takes some time.
-- "The user should recieve a message that the elevator is now at their desired floor" - it will stop and inform them that the door is open.
-- "Automated testing is encouraged" - fairly basic tests have been implemented for the components. In the spirit of testing behavior over internal state, these all have to do with render output rather than, say, prop changes. `ElevatorWrapper` could probably stand to be a little better covered, though.
+- "Users can view the current floor of the elevator at any given time".
+- "The elevator should take 1 second to move 1 floor" (it does, although it stops when arriving at destination floors, which takes some time).
+- "The user should recieve a message that the elevator is now at their desired floor" (it will stop and inform them that the door is open).
+- "Automated testing is encouraged" - While not an explicit requirement, it is a fairly explicit suggestion. I'm pretty new to front end testing so I'm sure there are some non-idiomatic examples in the suite, but I did implement basic tests for the components. In the spirit of testing behavior over internal state, these all have to do with render output rather than, say, prop changes. `ElevatorWrapper` could stand to be a little better covered, though.
 
 I can't shake the feeling that despite meeting those requirements I did so in a way that skirted around the spirit of the exercise, but obviously I leave that up to the reviewer.
 
