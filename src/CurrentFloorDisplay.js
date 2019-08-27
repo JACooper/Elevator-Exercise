@@ -8,23 +8,19 @@ export default class CurrentFloorDisplay extends React.Component {
     direction: PropTypes.string
   }
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { currentFloor, direction } = this.props;
 
     let directionDisplay = null;
     switch(direction) {
       case 'up':
-        directionDisplay = <div className='up-arrow'>^</div>;
+        directionDisplay = <div>^</div>;
         break;
       case 'down':
-        directionDisplay = <div className='down-arrow'>v</div>;
+        directionDisplay = <div>v</div>;
         break;
       case 'idle':
-        directionDisplay = <div className='blank-direction' />;
+        directionDisplay = <div/>;
         break;
     };
 

@@ -7,10 +7,6 @@ export default class DoorsDisplay extends React.Component {
     doorStatus: PropTypes.string
   }
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { doorStatus } = this.props;
 

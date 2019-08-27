@@ -10,16 +10,9 @@ export default class DestinationDisplay extends React.Component {
     addDestination: PropTypes.func
   }
 
-  constructor(props) {
-    super(props)
-
-    this.state = { }
-  }
-
   render() {
     const { destinations, addDestination } = this.props;
 
-    console.log(destinations)
     const buttons = [...Array(NUM_FLOORS)].map((_, i) => i + 1).map(floor => {
       const classes = `floor-button${destinations.includes(floor) ? ' selected' : ''}`;
       return <button key={floor} className={classes} onClick={() => {addDestination(floor)}}>{floor}</button>
