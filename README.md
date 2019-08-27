@@ -11,7 +11,7 @@ yarn install
 To run in hot module reloading mode:
 
 ```sh
-yarn start # The app should now be running on localhost/1234
+yarn start # The app should now be running on localhost:1234
 ```
 
 To create a production build:
